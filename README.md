@@ -46,7 +46,7 @@ https://xd.adobe.com/view/1fc940eb-3fa7-4318-bdc0-fe425720f0bf-4a9a/
 
 #### Component Tree
 
-> Use this section to display the structure of how your React components are being rendered. This should show the parent to child relation between you components. In other words, show which components are rendering the other components. 
+https://whimsical.com/TfewxkZvmBvUJt3VNuxQCu
 
 #### Component Hierarchy
 
