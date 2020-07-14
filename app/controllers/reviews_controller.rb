@@ -12,9 +12,9 @@ class ReviewsController < ApplicationController
   end
 
   # GET /reviews/1
-  def show
-    render json: @review
-  end
+  # def show
+  #   render json: @review
+  # end
 
   # POST /reviews
   def create

@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   # resources :photos
   
   resources :states, only: [:index, :show] do
-    resources :climbs, only: [:index, :show] do 
-      resources :reviews do
+    resources :climbs, only: [:index, :show, :create, :destroy] do 
+      resources :reviews, only: [:index, :create, :update, :destroy] do
         resources :photos, only: [:index, :show, :create, :destroy]
       end
     end

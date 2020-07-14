@@ -19,7 +19,7 @@ class ClimbsController < ApplicationController
     @climb = Climb.new(climb_params)
 
     if @climb.save
-      render json: @climb, status: :created, location: @climb
+      render json: @climb, status: :created
     else
       render json: @climb.errors, status: :unprocessable_entity
     end

@@ -29,6 +29,7 @@ review3 = Review.create!(review:'Love climbing!!',rating: 3, img_url:'https://im
 review4 = Review.create!(review:'So much fun.Its a great climb!!',rating: 4, img_url:'https://images.unsplash.com/photo-1516372048654-2e06f99e1382?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',climb: climb4, user: user2)
 review5 = Review.create!(review:'Awful!!',rating: 1, img_url:'https://images.unsplash.com/photo-1516372048654-2e06f99e1382?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',climb: climb1, user: user2)
 review6 = Review.create!(review:'meh!!',rating: 2, img_url:'https://images.unsplash.com/photo-1516372048654-2e06f99e1382?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',climb: climb2, user: user2)
+review7 = Review.create!(review:'So much fun.Its a great climb!!',rating: 2, img_url:'https://images.unsplash.com/photo-1516372048654-2e06f99e1382?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',climb: climb2, user: user1)
 
 # review5 = Review.create!(review:'Awful!!',rating: 1, img_url:'https://images.unsplash.com/photo-1516372048654-2e06f99e1382?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',climb_id: climb1, user_id: user2)
 # review6 = Review.create!(review:'meh!!',rating: 2, img_url:'https://images.unsplash.com/photo-1516372048654-2e06f99e1382?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',climb_id: climb2, user_id: user2)
