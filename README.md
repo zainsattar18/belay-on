@@ -73,7 +73,7 @@ src
 |__ services/
       |__ api-helper.jsx
       |__ auth.js
-      |__ images.jsx
+      |__ images.js
       |__ reviews.js
 |__ App.js/
 |__ App.css/
