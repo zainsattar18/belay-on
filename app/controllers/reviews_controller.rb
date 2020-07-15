@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  # before_action :authorize_request, only: [:create, :update, :destroy ]
   before_action :set_review, only: [:show, :update, :destroy]
 
   # GET /reviews
@@ -13,7 +14,13 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/1
   def show
-    render json: @review
+    # @state = State.find(params[:state_id])
+    # @climb = Climb.find(params[:climb_id])
+
+    # @reviews = Review.where(climb_id: @climb.id)
+
+    # render json: @reviews, include: [climb: { include: :state }]
+    render json: @review, include: [climb: { include: :state }]
   end
 
   # POST /reviews
@@ -21,7 +28,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @climb = Climb.find(params[:climb_id])
     @review.climb = @climb
-
+    # @review.user = @current_user
     if @review.save
       render json: @review, status: :created
     else
@@ -52,6 +59,6 @@ class ReviewsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def review_params
       # params.require(:review).permit(:review, :rating, :img, :climb_id, :user_id)
-      params.require(:review).permit(:review, :rating, :img, :climb_id, :user_id)
+      params.require(:review).permit(:review, :rating, :img_url, :climb_id, :user_id)
     end
 end

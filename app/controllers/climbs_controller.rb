@@ -1,5 +1,5 @@
 class ClimbsController < ApplicationController
-  before_action :set_climb, only: [:show, :update, :destroy]
+  before_action :set_climb, only: [:update, :destroy]
 
   # GET /climbs
   def index
@@ -11,8 +11,18 @@ class ClimbsController < ApplicationController
 
   # GET /climbs/1
   def show
-    render json: @climb
+    @state = State.find(params[:state_id])
+    @climbs = Climb.where(state_id: @state.id)
+
+    render json: @climbs, include: :state, status: :ok
+    # render json: @climb, include: :state, status: :ok
   end
+
+  # def show
+  #   @state = State.find(params[:state_id])
+  #   @climbs = Climb.where(state_id: @state.id)
+  #   render json: @climbs[(params[:id].to_i) - 1], include: :state, status: :ok
+  # end
 
   # POST /climbs
   def create
@@ -47,6 +57,6 @@ class ClimbsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def climb_params
-      params.require(:climb).permit(:climb_name, :img_source, :type_of_climb, :location, :state_id)
+      params.require(:climb).permit(:climb_name, :img_url, :type_of_climb, :location, :state_id)
     end
 end
