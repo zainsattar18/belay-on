@@ -3,7 +3,7 @@ import { withRouter, Link } from 'react-router-dom'
 
 function States(props) {
   
-  
+  // console.log(props.allStates)
   return (
     <div>
       <div className="states">

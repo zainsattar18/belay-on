@@ -26,6 +26,7 @@ class Home extends Component {
     this.setState({
       allStates: response
     })
+    // console.log(this.state.allStates)
   }
 
   showModal = () => {
@@ -70,8 +71,13 @@ class Home extends Component {
           <States allStates={this.state.allStates} />
         </Route>
 
-        <Route exact path='states/:id/climbs'>
-          <Climbs />
+        <Route path='/states/:id/climbs' render={(props) => {
+          const {id} = props.match.params 
+          return <Climbs
+            id={id}
+            allStates={this.state.allStates}
+          />
+        }}>
         </Route>
       </div>
     )

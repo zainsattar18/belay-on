@@ -1,4 +1,5 @@
 class ClimbsController < ApplicationController
+  
   before_action :set_climb, only: [:update, :destroy]
 
   # GET /climbs
@@ -21,12 +22,13 @@ class ClimbsController < ApplicationController
 
   # POST /climbs
   def create
-    @climb = Climb.new(climb_params)
+    @climbData = Climb.new(climb_params)
+    @climbData.state_id = params[:state_id]
 
-    if @climb.save
-      render json: @climb, status: :created
+    if @climbData.save
+      render json: @climbData, status: :created
     else
-      render json: @climb.errors, status: :unprocessable_entity
+      render json: @climbData.errors, status: :unprocessable_entity
     end
   end
 
@@ -52,6 +54,6 @@ class ClimbsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def climb_params
-      params.require(:climb).permit(:climb_name, :img_url, :type_of_climb, :location, :state_id)
+      params.require(:climb).permit(:climb_name, :img_url, :type_of_climb, :location)
     end
 end
