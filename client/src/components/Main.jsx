@@ -1,51 +1,61 @@
 import React, { Component } from 'react'
-import { getStates } from '../services/states'
-
-import States from './States'
-import State from './State'
-import { Route } from 'react-router'
+import { withRouter } from 'react-router'
+import Home from "../components/Home"
+import {loginUser, registerUser, verifyUser, removeToken} from '../services/auth'
 
 class Main extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
-      allStates: []
+      currentUser:null
     }
   }
 
-  // async componentDidMount() {
-  //   const response = await getStates()
-  //   this.setState({
-  //     allStates: response
-  //   })
-  //   console.log(this.state.allStates)
-  // }
-
   componentDidMount() {
-    this.getState()
+    this.handleVerify();
   }
 
-  getState = async () => {
-    const response = await getStates()
-    this.setState({
-      allStates:response
+  handleLogin = async (userData) => {
+    const currentUser = await loginUser(userData)
+    this.state({
+      currentUser: currentUser
     })
   }
 
+  handleRegister = async (userData) => {
+    const currentUser = await registerUser(userData)
+    this.setState({
+      currentUser:currentUser
+    })
+  }
+
+  handleLogout = () => {
+    this.setState({
+      currentUser:null
+    })
+    localStorage.removeItem('authToken');
+    removeToken()
+    this.props.history.push('/')
+  }
+
+  handleVerify = async () => {
+    const currentUser = await verifyUser()
+    this.setState({
+      currentUser: currentUser
+    })
+  }
 
   render() {
     return (
       <div>
-
-        <Route exact path = '/states'>
-          <States allStates={this.state.allStates} />
-        </Route>
-
-        <Route exact path='states/:id/climbs'>
-          <State />
-        </Route>
+        <Home
+          currentUser={this.state.currentUser}
+          handleLogin={this.handleLogin}
+          handleRegister={this.handleRegister}
+        /> 
       </div>
     )
   }
 }
-export default Main
+
+export default withRouter (Main)
