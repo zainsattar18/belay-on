@@ -18,11 +18,6 @@ class ClimbsController < ApplicationController
     # render json: @climb, include: :state, status: :ok
   end
 
-  # def show
-  #   @state = State.find(params[:state_id])
-  #   @climbs = Climb.where(state_id: @state.id)
-  #   render json: @climbs[(params[:id].to_i) - 1], include: :state, status: :ok
-  # end
 
   # POST /climbs
   def create

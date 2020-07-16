@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 
 export default class Register extends Component {
   constructor() {
@@ -26,6 +27,9 @@ export default class Register extends Component {
     return (
       <div className={showModalView}>
         <section className='modal-main'>
+          <Link to='/home'>
+          <button onClick={hideModal}>X</button>
+          </Link>
           <form onSubmit={(e) => {
             e.preventDefault()
             handleRegister(this.state);
@@ -65,7 +69,7 @@ export default class Register extends Component {
                 />
               </label>
             </div>
-            <button onClick={hideModal}>Submit</button>
+            <button>Submit</button>
           </form>
         </section>
       </div>

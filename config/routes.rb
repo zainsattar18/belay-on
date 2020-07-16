@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users
+  resources :users, only: :create 
 
   
   post '/auth/login', to: 'authentication#login'

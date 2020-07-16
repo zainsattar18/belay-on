@@ -21,6 +21,7 @@ export default class Login extends Component {
     return (
       <div className={showModalView}>
         <section className='modal-main'>
+        <button onClick={hideModal}>X</button>
           <form onSubmit={(e) => {
             e.preventDefault();
             handleLogin(this.state);
@@ -51,7 +52,7 @@ export default class Login extends Component {
             </div>
             <br />
             <Link to='/register'>Register</Link>
-            <button onClick={hideModal}>Submit</button>
+            <button>Submit</button>
           </form>
         </section>
       </div>

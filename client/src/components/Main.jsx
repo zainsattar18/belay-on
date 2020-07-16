@@ -17,7 +17,7 @@ class Main extends Component {
 
   handleLogin = async (userData) => {
     const currentUser = await loginUser(userData)
-    this.state({
+    this.setState({
       currentUser: currentUser
     })
   }
