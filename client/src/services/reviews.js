@@ -25,4 +25,3 @@ export const deleteReview = async (review_id) => {
   const resp = await api.delete(`/reviews/${review_id}`)
   return resp.data
 }
-//full crud
