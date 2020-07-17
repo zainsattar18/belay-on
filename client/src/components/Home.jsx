@@ -3,6 +3,7 @@ import { getStates } from '../services/states'
 import '../css/Home.css'
 import States from './States'
 import Climbs from './Climbs'
+import Reviews from './Reviews'
 import Register from './Register'
 import Login from './Login'
 import Header from './shared/Header'
@@ -13,6 +14,7 @@ class Home extends Component {
     super(props)
     this.state = {
       allStates: [],
+      stateId:[],
       show:false
     }
   }
@@ -26,7 +28,6 @@ class Home extends Component {
     this.setState({
       allStates: response
     })
-    // console.log(this.state.allStates)
   }
 
   showModal = () => {
@@ -71,7 +72,7 @@ class Home extends Component {
           <States allStates={this.state.allStates} />
         </Route>
 
-        <Route path='/states/:id/climbs' render={(props) => {
+        <Route exact path='/states/:id/climbs' render={(props) => {
           const {id} = props.match.params 
           return <Climbs
             id={id}
@@ -79,6 +80,16 @@ class Home extends Component {
           />
         }}>
         </Route>
+
+        <Route exact path="/states/:id/climbs/:id/reviews" render={(props) => { 
+          const {id} = props.match.params
+         return <Reviews
+           id={id}
+           allStates={this.state.allStates}
+          />
+        }}>
+        </Route>
+
       </div>
     )
   }

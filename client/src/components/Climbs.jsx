@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import AddClimb from './AddClimb'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import { getClimbs, postClimb, deleteClimb } from '../services/climbs';
+import AddReview from './AddReview';
 
 
 class Climbs extends Component {
@@ -18,13 +19,6 @@ class Climbs extends Component {
     this.getClimb()
   }
 
-  // getStateId = async () => {
-  //   const response = await getState(this.props.match.params.id)
-  //   this.setState({
-  //     stateId: response
-  //   })
-  //   console.log(this.state.stateId.id)
-  // }
 
   showModal = () => {
     this.setState({
@@ -43,8 +37,8 @@ class Climbs extends Component {
       climbs: response,
       stateId: this.props.match.params.id
     })
-    console.log(this.state.climbs)
-    console.log(this.state.stateId)
+    // console.log(this.state.climbs)
+    // console.log(this.state.stateId)
 
   }
 
@@ -58,14 +52,13 @@ class Climbs extends Component {
   addClimb = async (climbData) => {
     const response = await postClimb(this.props.match.params.id, climbData)
     this.setState(prevState => ({
-      climbs: [...prevState.climbs,response]
+      climbs: [...prevState.climbs, response]
     }))
-
   }
 
   deleteClimb = async (climb_id) => {
     await deleteClimb(climb_id)
-    this.setState( prevState => ({
+    this.setState(prevState => ({
       climbs: prevState.climbs.filter(climb => climb.id !== climb_id)
     }))
   }
@@ -79,14 +72,14 @@ class Climbs extends Component {
 
       <div>
         <button onClick={this.showModal} >Add New Climb</button>
-         <AddClimb
+        <AddClimb
 
-            show={this.state.show}
-            id={this.state.stateId}
-            hideModal={this.hideModal}
-            handleAdd={this.addClimb}
-          />
-        
+          show={this.state.show}
+          id={this.state.stateId}
+          hideModal={this.hideModal}
+          handleAdd={this.addClimb}
+        />
+
         {/* <h2>{this.props.match.params.name}</h2> */}
         {this.state.climbs && this.state.climbs.map(climbs => {
           return <div key={climbs.id}>
@@ -96,7 +89,11 @@ class Climbs extends Component {
               <div>{climbs.type_of_climb}</div>
               <img src={climbs.img_url} alt={climbs.climb_name} width="250px" />
             </div>
-            <button onClick={()=>this.deleteClimb(climbs.id)}>Delete</button>
+            <button onClick={() => this.deleteClimb(climbs.id)}>Delete</button>
+            <Link to={`/states/${this.state.stateId}/climbs/${climbs.id}/reviews`}>
+              <button>Read Reviews</button>
+              
+            </Link>
           </div>
 
         })}

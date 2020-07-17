@@ -15,7 +15,7 @@ export const getClimb = async (state_id,climb_id) => {
 
 //post
 export const postClimb = async (state_id, climbData) => {
-  const resp = await api.post(`states/${state_id}/climbs`, { climb: climbData })
+  const resp = await api.post(`/states/${state_id}/climbs`, { climb: climbData })
   return resp.data 
 }
 

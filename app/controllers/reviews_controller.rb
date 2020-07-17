@@ -4,8 +4,9 @@ class ReviewsController < ApplicationController
 
   # GET /reviews
   def index
-    @state = State.find(params[:state_id])
+    # @state = State.find(params[:state_id])
     @climb = Climb.find(params[:climb_id])
+    # @climb = State.find(params[:climb_id])
 
     @reviews = Review.where(climb_id: @climb.id)
 
@@ -25,19 +26,26 @@ class ReviewsController < ApplicationController
 
   # POST /reviews
   def create
-    @review = Review.new(review_params)
-    @climb = Climb.find(params[:climb_id])
-    @review.climb = @climb
+    @reviewData = Review.new(review_params)
+    @reviewData.climb_id = params[:climb_id]
+    @reviewData.user_id = @current_user.id 
+    # @climb = Climb.find(params[:climb_id])
+    # @review.climb = @climb
     # @review.user = @current_user
-    if @review.save
-      render json: @review, status: :created
+
+    # @review.climb_id = params[:climb_id]
+
+    if @reviewData.save
+      render json: @reviewData, status: :created
     else
-      render json: @review.errors, status: :unprocessable_entity
+      render json: @reviewData.errors, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /reviews/1
   def update
+    # @review.climb_id = params[:climb_id]
+    # @review.user_id = @current_user.id 
     if @review.update(review_params)
       render json: @review
     else
@@ -58,6 +66,6 @@ class ReviewsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def review_params
-      params.require(:review).permit(:review, :rating, :img_url, :climb_id, :user_id)
+      params.require(:review).permit(:review, :rating, :img_url)
     end
 end

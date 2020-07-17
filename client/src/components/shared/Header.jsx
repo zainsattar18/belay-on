@@ -28,7 +28,7 @@ import {Link} from 'react-router-dom'
 export default function header(props) {
   return (
     <div>
-        <Link to='/home'>
+        <Link to='/states'>
           <img src={belayon} alt="Belay On Logo" width="150px" />
         </Link>
         <Link to='/login'>

@@ -14,6 +14,7 @@ class ClimbsController < ApplicationController
   def show
     @state = State.find(params[:state_id])
     @climbs = Climb.where(state_id: @state.id)
+    # @climbs = Climb.find(params[:climb_id])
 
     render json: @climbs, include: :state, status: :ok
     # render json: @climb, include: :state, status: :ok
