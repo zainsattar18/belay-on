@@ -54,7 +54,7 @@ class Reviews extends Component {
       reviews: response,
       climbId:climb_id
     })
-    console.log(climb_id)
+    // console.log(climb_id)
     console.log(this.state.reviews)
   }
   addReview = async (reviewData) => { 
@@ -64,12 +64,22 @@ class Reviews extends Component {
     }))
   }
 
-  updateReview = async (reviewData) => {
-    const response = await putReview(this.props.match.params.id, reviewData)
-    this.setState(prevState => ({
-      reviews:prevState.reviews.map(updated => updated.id === parseInt(this.state.climbId) ? response : updated)
-    }))
-  }
+  // updateReview = async (reviewData) => {
+  //   const response = await putReview(this.props.match.params.id, reviewData)
+  //   // id = this.state.reviews 
+  //   // const response = await putReview(id, reviewData)
+  //   //this.state.reviews.id
+  //   this.setState(prevState => ({
+  //     reviews:prevState.reviews.map(review => review.id === parseInt(this.state.climbId) ? response : review)
+  //   }))
+  // }
+
+  updateReview = async (id, reviewData) => {
+      const response = await putReview(id, reviewData)
+      this.setState(prevState => ({
+        reviews:prevState.reviews.map(review => review.id === parseInt(id) ? response : review)
+      }))
+    }
 
   deleteClimb = async (review_id) => {
     await deleteReview(review_id)
@@ -80,14 +90,16 @@ class Reviews extends Component {
 
 
   render() {
-    // console.log(this.props.allStates)
+    console.log(this.state.reviews)
+    const {info} = this.props.match.params
+    const reviewItem = this.state.reviews.find(review => review.id === parseInt(info))
     
     return (
       <div>
         <div>
           <button onClick={this.showModal}>Add Review</button>
           <AddReview
-            id={this.state.climbId}
+            id={this.state.reviews.id}
             show={this.state.show}
             hideModal={this.hideModal}
             handleAdd={this.addReview}
@@ -101,10 +113,12 @@ class Reviews extends Component {
             {/* <BeautyStars value={review.rating} size="25px"/> */}
             <button onClick={this.updateModal}>Update Review</button>
             <UpdateReview
-              id={this.state.climbId}
+              // id={this.state.climbId}
+              id={review.id}
               update={this.state.update}
               hideModal={this.hideUpdateModal}
-              handleUpdate = {this.updateReview}
+              handleUpdate={this.updateReview}
+              reviewItem = {reviewItem}
             />
             <button onClick={()=> this.deleteClimb(review.id)}> Delete Review</button>
           </div>

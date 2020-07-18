@@ -86,7 +86,7 @@ class AddClimb extends Component {
             <br />
             
 
-            <button>Submit</button>
+            <button onClick={hideModal}>Submit</button>
           </form>
         </section>
       </div>

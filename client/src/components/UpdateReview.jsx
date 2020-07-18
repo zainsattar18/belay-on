@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {putReview} from '../services/reviews'
 
 export default class UpdateReview extends Component {
   constructor() {
@@ -10,6 +11,26 @@ export default class UpdateReview extends Component {
     }
   }
 
+  componentDidMount() {
+    if (this.props.reviewItem) {
+      this.setFormData();
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if ( prevProps.reviewItem !== this.props.reviewItem ) {
+      this.setFormData();
+    }
+  }
+
+  setFormData = () => {
+    this.setState({
+      review: this.props.foodItem.review,
+      rating: this.props.foodItem.rating,
+      img_url: this.props.foodItem.img_url
+    })
+  }
+
   handleChange = (e) => {
     const { name, value } = e.target;
     this.setState({
@@ -17,7 +38,10 @@ export default class UpdateReview extends Component {
     })
   }
 
+  
+
   render() {
+    console.log(this.props.id)
     const { review, rating, img_url } = this.state
     const { id, stateId, update, hideModal, handleUpdate, history } = this.props
     const showModalView = update ? 'modal display-block' : 'modal display-none'
@@ -28,7 +52,7 @@ export default class UpdateReview extends Component {
           <button onClick={hideModal}>X</button>
           <form onSubmit={(e) => {
             e.preventDefault();
-            handleUpdate(this.state);
+            handleUpdate(id,this.state);
             // history.push(`/states/${id}/climbs/${id}/reviews`)
           }}>
             <h3>Update Review</h3>
@@ -74,7 +98,7 @@ export default class UpdateReview extends Component {
             <br />
             
 
-            <button>Submit</button>
+            <button onClick={hideModal}>Submit</button>
           </form>
         </section>
       </div>

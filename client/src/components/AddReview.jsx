@@ -31,7 +31,7 @@ class AddReview extends Component {
           <form onSubmit={(e) => {
             e.preventDefault();
             handleAdd(this.state);
-            history.push(`/states/${id}/climbs/${id}/reviews`)
+            // history.push(`/states/${id}/climbs/${id}/reviews`) 
           }}>
             <h3>Add Review</h3>
             <div>
@@ -76,7 +76,7 @@ class AddReview extends Component {
             <br />
             
 
-            <button>Submit</button>
+            <button onClick={hideModal}>Submit</button>
           </form>
         </section>
       </div>
