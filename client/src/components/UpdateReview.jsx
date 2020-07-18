@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import {putReview} from '../services/reviews'
+import { withRouter } from 'react-router-dom';
 
-export default class UpdateReview extends Component {
+
+class UpdateReview extends Component {
   constructor() {
     super();
     this.state = {
@@ -18,16 +19,16 @@ export default class UpdateReview extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if ( prevProps.reviewItem !== this.props.reviewItem ) {
+    if (prevProps.reviewItem !== this.props.reviewItem) {
       this.setFormData();
     }
   }
 
   setFormData = () => {
     this.setState({
-      review: this.props.foodItem.review,
-      rating: this.props.foodItem.rating,
-      img_url: this.props.foodItem.img_url
+      review: this.props.reviewItem.review,
+      rating: this.props.reviewItem.rating,
+      img_url: this.props.reviewItem.img_url
     })
   }
 
@@ -38,72 +39,76 @@ export default class UpdateReview extends Component {
     })
   }
 
-  
+
 
   render() {
     console.log(this.props.id)
+
     const { review, rating, img_url } = this.state
-    const { id, stateId, update, hideModal, handleUpdate, history } = this.props
-    const showModalView = update ? 'modal display-block' : 'modal display-none'
+    const { id, info, update, hideModal, handleUpdate, history } = this.props
+    const showModalView = update == id ? 'modal display-block' : 'modal display-none'
+
     return (
       <div>
-         <div className={showModalView}>
-        <section className='modal-main'>
-          <button onClick={hideModal}>X</button>
-          <form onSubmit={(e) => {
-            e.preventDefault();
-            handleUpdate(id,this.state);
-            // history.push(`/states/${id}/climbs/${id}/reviews`)
-          }}>
-            <h3>Update Review</h3>
-            <div>
-              <label>
-                Review
+        <div className={showModalView}>
+          <section className='modal-main'>
+            <button onClick={hideModal}>X</button>
+            <form onSubmit={(e) => {
+              e.preventDefault();
+              handleUpdate(id, this.state);
+              // history.push(`/states/${id}/climbs/${id}/reviews`)
+            }}>
+              <h3>Update Review</h3>
+              <div>
+                <label>
+                  Review
         <input
-                  type="text"
-                  name="review"
-                  value={review}
-                  onChange={this.handleChange}
-                />
-              </label>
-            </div>
-            <br />
+                    type="text"
+                    name="review"
+                    value={review}
+                    onChange={this.handleChange}
+                  />
+                </label>
+              </div>
+              <br />
 
-            <div>
-              <label>
-                Rating:
+              <div>
+                <label>
+                  Rating:
         <input
-                  type="text"
-                  name="rating"
-                  value={rating}
-                  onChange={this.handleChange}
-                />
-              </label>
-            </div>
-            
-            <br />
-            
-            <div>
-              <label>
-                Image:
-        <input
-                  type="text"
-                  name="img_url"
-                  value={img_url}
-                  onChange={this.handleChange}
-                />
-              </label>
-            </div>
-              
-            <br />
-            
+                    type="text"
+                    name="rating"
+                    value={rating}
+                    onChange={this.handleChange}
+                  />
+                </label>
+              </div>
 
-            <button onClick={hideModal}>Submit</button>
-          </form>
-        </section>
-      </div>
-        
+              <br />
+
+              <div>
+                <label>
+                  Image:
+        <input
+                    type="text"
+                    name="img_url"
+                    value={img_url}
+                    onChange={this.handleChange}
+                  />
+                </label>
+              </div>
+
+              <br />
+
+
+              <button onClick={hideModal}>Submit</button>
+            </form>
+          </section>
+        </div>
+
       </div>
     )
   }
 }
+
+export default withRouter (UpdateReview)

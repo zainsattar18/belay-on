@@ -12,7 +12,7 @@ class Reviews extends Component {
       reviews: [],
       climbId: null,
       show: false,
-      update:false
+      update:''
     }
 }
 
@@ -33,9 +33,9 @@ class Reviews extends Component {
     })
   }
 
-  updateModal = () => {
+  updateModal = (id) => {
     this.setState({
-      update:true
+      update:id
     })
   }
 
@@ -91,8 +91,10 @@ class Reviews extends Component {
 
   render() {
     console.log(this.state.reviews)
+    
     const {info} = this.props.match.params
     const reviewItem = this.state.reviews.find(review => review.id === parseInt(info))
+    console.log(this.props.match.params)
     
     return (
       <div>
@@ -111,14 +113,16 @@ class Reviews extends Component {
             <div>{review.review} </div>
             <div>{review.rating}</div>
             {/* <BeautyStars value={review.rating} size="25px"/> */}
-            <button onClick={this.updateModal}>Update Review</button>
+            <button onClick={() => this.updateModal(review.id)}>Update Review</button>
             <UpdateReview
-              // id={this.state.climbId}
+              
               id={review.id}
+              // id={info}
               update={this.state.update}
               hideModal={this.hideUpdateModal}
               handleUpdate={this.updateReview}
-              reviewItem = {reviewItem}
+              reviewItem={reviewItem}
+              info={info}
             />
             <button onClick={()=> this.deleteClimb(review.id)}> Delete Review</button>
           </div>

@@ -31,9 +31,17 @@ export default function header(props) {
         <Link to='/states'>
           <img src={belayon} alt="Belay On Logo" width="150px" />
         </Link>
-        <Link to='/login'>
+      {props.currentUser ?
+        <div>
+        <div>Welcome {props.currentUser.username}</div>
+        <button onClick={props.handleLogout}>Logout</button>
+        </div>
+        :
+        <Link to='/login'> 
           <button onClick={props.showModal}>Log-In</button>
-          </Link>
+      </Link> 
+        
+          }
     </div>
   )
 }

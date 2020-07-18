@@ -49,6 +49,8 @@ class Home extends Component {
         <Header
           show={this.state.show}
           showModal={this.showModal}
+          currentUser={this.props.currentUser}
+          handleLogout ={this.props.handleLogout}
           // hideModal = {this.hideModal}
         />
         <Route path='/login' render={(props)=>

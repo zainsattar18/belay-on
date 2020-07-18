@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router'
 import Home from "../components/Home"
-import {loginUser, registerUser, verifyUser, removeToken} from '../services/auth'
+import { loginUser, registerUser, verifyUser, removeToken } from '../services/auth'
 
 class Main extends Component {
   constructor() {
     super();
     this.state = {
-      currentUser:null
+      currentUser: null
     }
   }
 
@@ -25,13 +25,13 @@ class Main extends Component {
   handleRegister = async (userData) => {
     const currentUser = await registerUser(userData)
     this.setState({
-      currentUser:currentUser
+      currentUser: currentUser
     })
   }
 
   handleLogout = () => {
     this.setState({
-      currentUser:null
+      currentUser: null
     })
     localStorage.removeItem('authToken');
     removeToken()
@@ -52,10 +52,11 @@ class Main extends Component {
           currentUser={this.state.currentUser}
           handleLogin={this.handleLogin}
           handleRegister={this.handleRegister}
-        /> 
+          handleLogout={this.handleLogout}
+        />
       </div>
     )
   }
 }
 
-export default withRouter (Main)
+export default withRouter(Main)
