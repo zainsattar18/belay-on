@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { getReviews, postReview, deleteReview, putReview } from '../services/reviews'
-import BeautyStars from 'beauty-stars'
+import StarRatings from 'react-star-ratings'
 import AddReview from '../components/AddReview'
 import UpdateReview from '../components/UpdateReview'
 
@@ -94,7 +94,6 @@ class Reviews extends Component {
     
     const {info} = this.props.match.params
     const reviewItem = this.state.reviews.find(review => review.id === parseInt(info))
-    console.log(this.props.match.params)
     
     return (
       <div>
@@ -112,7 +111,15 @@ class Reviews extends Component {
             <img src={review.img_url} alt={review.review} width="250"/>
             <div>{review.review} </div>
             <div>{review.rating}</div>
-            {/* <BeautyStars value={review.rating} size="25px"/> */}
+            <div>Review By: {review.user_id}</div>
+            {/* <div>By: {this.props.currentUser.username}</div> */}
+            
+            <StarRatings
+              rating={review.rating}
+              starDimension='25px'
+              starRatedColor='rgba(255,215,0)'
+            />
+            
             <button onClick={() => this.updateModal(review.id)}>Update Review</button>
             <UpdateReview
               

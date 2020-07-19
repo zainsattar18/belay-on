@@ -25,3 +25,11 @@
   display: none;
 }
 
+.show{
+  background-image: url('../../src/images/show.jpg');
+  background-size: cover;
+  background-position: center;
+  height:100%;
+  opacity: .5;
+  /* background-color: orange; */
+}

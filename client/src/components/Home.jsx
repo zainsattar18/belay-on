@@ -1,13 +1,17 @@
 import React, { Component } from 'react'
 import { getStates } from '../services/states'
 import '../css/Home.css'
+import '../css/Styles.css'
 import States from './States'
 import Climbs from './Climbs'
 import Reviews from './Reviews'
 import Register from './Register'
+import Show from './shared/Show'
 import Login from './Login'
 import Header from './shared/Header'
 import { Route, withRouter } from 'react-router-dom'
+import LowerNav from './shared/LowerNav'
+import Footer from './shared/Footer'
 
 class Home extends Component {
   constructor(props) {
@@ -46,6 +50,8 @@ class Home extends Component {
   render() {
     return (
       <div>
+        
+
         <Header
           show={this.state.show}
           showModal={this.showModal}
@@ -70,6 +76,10 @@ class Home extends Component {
           />}>
         </Route>
 
+        <Route exact path='/'>
+        <Show />
+        </Route>
+
         <Route exact path='/states'>
           <States allStates={this.state.allStates} />
         </Route>
@@ -88,10 +98,18 @@ class Home extends Component {
          return <Reviews
            id={id}
            allStates={this.state.allStates}
+           currentUser={this.props.currentUser}
           />
         }}>
         </Route>
 
+        <Route path='/'>
+        <LowerNav/>
+        </Route>
+
+        <Route path='/'>
+          <Footer />
+        </Route>
       </div>
     )
   }

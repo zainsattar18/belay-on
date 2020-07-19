@@ -1,26 +1,3 @@
-// import React, { Component } from 'react'
-// import belayon from '../../images/belayon.jpeg'
-// import {Link} from 'react-router-dom'
-
-// export default class header extends Component {
-//   constructor(props) {
-//     super(props);
-
-//   }
-//   render() {
-//     return (
-//       <div>
-//         <Link to='/states'>
-//           <img src={belayon} alt="Belay On Logo" width="150px" />
-//         </Link>
-//         <Link to='/login'>
-//           <button onClick={props.showModal}>Log-In</button>
-//           </Link>
-//       </div>
-//     )
-//   }
-// }
-
 import React from 'react'
 import belayon from '../../images/belayon.jpeg'
 import {Link} from 'react-router-dom'
@@ -28,17 +5,18 @@ import {Link} from 'react-router-dom'
 export default function header(props) {
   return (
     <div>
-        <Link to='/states'>
+        <Link to='/'>
           <img src={belayon} alt="Belay On Logo" width="150px" />
         </Link>
       {props.currentUser ?
         <div>
-        <div>Welcome {props.currentUser.username}</div>
-        <button onClick={props.handleLogout}>Logout</button>
+        
+          <button onClick={props.handleLogout}>Logout</button>
+          <div>Welcome {props.currentUser.username}</div>
         </div>
         :
         <Link to='/login'> 
-          <button onClick={props.showModal}>Log-In</button>
+          <button onClick={props.showModal} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Log-In</button>
       </Link> 
         
           }

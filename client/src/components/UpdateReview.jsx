@@ -42,7 +42,7 @@ class UpdateReview extends Component {
 
 
   render() {
-    console.log(this.props.id)
+    // console.log(this.props.id)
 
     const { review, rating, img_url } = this.state
     const { id, info, update, hideModal, handleUpdate, history } = this.props
