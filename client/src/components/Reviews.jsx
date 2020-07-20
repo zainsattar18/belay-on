@@ -90,12 +90,14 @@ class Reviews extends Component {
 
 
   render() {
-    console.log(this.state.reviews)
-
+    // console.log(this.state.reviews)
+    console.log(this.props.currentUser)
     const { info } = this.props.match.params
     const reviewItem = this.state.reviews.find(review => review.id === parseInt(info))
 
     return (
+      
+
       <div>
         <div className="bg-indigo-900 text-center py-8 lg:px-4">
           <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded p-2 m-4" onClick={this.showModal}>Add Review</button>
@@ -106,30 +108,35 @@ class Reviews extends Component {
             handleAdd={this.addReview}
           />
         </div>
-        <div className="flex flex-wrap justify-evenly m-7">
+      
+        <div className="mx-auto px-4 py-8 max-w-xl my-10 z-auto">
           {this.state.reviews && this.state.reviews.map(review => {
             return <div key={review.id}>
-              <div className="max-w-sm w-full lg:max-w-full lg:flex">
-                <div className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden">
-                  <img src={review.img_url} alt={review.review} />
+              <div className="bg-white shadow-2xl rounded-lg mb-6 tracking-wide">
+                <div className="md:flex-shrink-0">
+                  <img src={review.img_url} alt={review.review} className="w-full h-64 rounded-lg rounded-b-none"/>
                   </div>
-                <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-                  <div className="mb-8">
+                <div className="px-4 py-2 mt-2">
+                  <div className="text-md text-gray-700">Review By: {review.user_id}
+                  {/* {this.props.currentUser.username} */}
+                  </div>
+                  <div className="mb-8 mt-8">
                     <div className="text-gray-900 font-bold text-xl mb-2">
-                      <p className="text-gray-700 text-base">{review.review} </p>
-                      <div>{review.rating}</div>
-                      <div>Review By: {review.user_id}</div>
-                      {/* <div>By: {this.props.currentUser.username}</div> */}
-
+                      <p className="text-gray-700 text-base whitespace whitespace-preline">{review.review} </p>
+                      {/* <div>{review.rating}</div> */}
+                      
+                      <div>By: {this.props.currentUser && this.props.currentUser.username}</div>
+                      <div className="z-0">
                       <StarRatings
                         rating={review.rating}
                         starDimension='25px'
                         starRatedColor='rgba(255,215,0)'
-                      />
+                        />
+                        </div>
                     </div>
                   </div>
                 </div>
-                <div className="flex flex-col justify-evenly m-2 pt-1">
+                <div className="flex flex-row justify-evenly m-2 mb-5 pb-2">
                   <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick={() => this.updateModal(review.id)}>Update Review</button>
                   <UpdateReview
 
@@ -148,6 +155,7 @@ class Reviews extends Component {
           })}
         </div>
       </div>
+      
     )
   }
 }

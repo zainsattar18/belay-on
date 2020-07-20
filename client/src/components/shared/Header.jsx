@@ -1,6 +1,7 @@
 import React from 'react'
 import belayon from '../../images/belayon.jpeg'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import Reviews from '../Reviews'
 
 export default function header(props) {
   return (
@@ -15,6 +16,9 @@ export default function header(props) {
         
           <button onClick={props.handleLogout} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-5 border border-blue-700 rounded mr-1">Logout</button>
           <div>Welcome {props.currentUser.username}</div>
+          {/* <Reviews
+          currentUser={props.currentUser.username}
+          /> */}
         </div>
         :
         <Link to='/login'> 
