@@ -8,7 +8,7 @@ function Show() {
       <div className="image">
         <div className="flex justify-center">
       <div className="main">
-        <div className= 'border max-w-sm rounded-md overflow-hidden shadow-lg mt-40 p-10'>
+        <div className= 'border-4 border-blue-500 max-w-sm rounded-md overflow-hidden shadow-lg mt-40 p-10'>
 
           <div className="font-bold text-xl mb-2">Welcome to Belay-On</div>
           <div>Click below to check out our climbs</div>
