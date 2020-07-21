@@ -46,6 +46,8 @@ class Reviews extends Component {
     })
   }
 
+  
+
 
   getReview = async (climb_id) => {
     // state_id = this.props.id 
