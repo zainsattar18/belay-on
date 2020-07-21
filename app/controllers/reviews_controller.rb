@@ -36,7 +36,7 @@ class ReviewsController < ApplicationController
     # @review.climb_id = params[:climb_id]
 
     if @reviewData.save
-      render json: @reviewData, status: :created
+      render json: @reviewData, include: [{climb: { include: :state }}, :user]
     else
       render json: @reviewData.errors, status: :unprocessable_entity
     end
