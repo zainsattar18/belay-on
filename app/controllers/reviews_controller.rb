@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
 
     @reviews = Review.where(climb_id: @climb.id)
 
-    render json: @reviews, include: [climb: { include: :state }]
+    render json: @reviews, include: [{climb: { include: :state }}, :user]
   end
 
   # GET /reviews/1
@@ -47,7 +47,7 @@ class ReviewsController < ApplicationController
     # @review.climb_id = params[:climb_id]
     # @review.user_id = @current_user.id 
     if @review.update(review_params)
-      render json: @review
+      render json: @review, include: [{climb: { include: :state }}, :user]
     else
       render json: @review.errors, status: :unprocessable_entity
     end

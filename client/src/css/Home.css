@@ -38,32 +38,3 @@
   text-align: center;
 }
 
-/* .show:after{
-  background-image: url('../../src/images/show.jpg');
-  opacity: 0.5;
-}  */
-
-/* .wrap{
-  width:100%
-}
-.image{
-  background-image: url('../../src/images/show.jpg');
-  background-position: center;
-  background-size: cover;
-  position: relative;
-  height:100vh;
-}
-/* .image::after{
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  background: rgba(255, 255, 255, .3);
-  
-  /* background: rgba(0,0,0,0.4); */
-
-/* .main{
-  color:rgb(236, 1, 1)
-}  */

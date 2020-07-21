@@ -15,16 +15,13 @@ export default function footer() {
       </div>
       <div className="inline-block">
         <div className="inline-block m-1">
-      <Link to='https://github.com/zainsattar18'>
-        <img src={github} alt="github" width="20px" />
-        </Link>
+          <Link to={{ pathname: "https://github.com/zainsattar18" }} target="_blank" > <img src={github} alt="github" width="20px" /></Link>
+        </div>
+
+        <div className="inline-block m-1">
+          <Link to={{ pathname: "https://www.linkedin.com/in/zain-sattar-0368611b0" }} target="_blank" > <img src={linkedin} alt="linkedin" width="20px" /></Link>
+        </div>
       </div>
-      <div className="inline-block m-1">
-      <Link to="https://www.linkedin.com/in/zain-sattar-0368611b0/">
-        <img src={linkedin} alt="linkedin" width="20px" />
-          </Link>
-          </div> 
-    </div>
     </div>
   )
 }

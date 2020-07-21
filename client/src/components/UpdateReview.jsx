@@ -42,10 +42,10 @@ class UpdateReview extends Component {
 
 
   render() {
-    // console.log(this.props.id)
+    
 
     const { review, rating, img_url } = this.state
-    const { id, info, update, hideModal, handleUpdate, history } = this.props
+    const { id, update, hideModal, handleUpdate } = this.props
     const showModalView = update === id ? 'modal display-block' : 'modal display-none'
 
     return (
@@ -53,7 +53,7 @@ class UpdateReview extends Component {
         <div className="w-full max-w-xs z-50">
           <div className={showModalView}>
             <section className='modal-main'>
-              <button onClick={hideModal} onClick={hideModal} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline m-1">X</button>
+              <button onClick={hideModal} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline m-1">X</button>
               <form onSubmit={(e) => {
                 e.preventDefault();
                 handleUpdate(id, this.state);
@@ -89,7 +89,7 @@ class UpdateReview extends Component {
                 <div className="mb-6">
                   <label className="block text-gray-700 text-sm font-bold mb-2">
                     Review
-        <input className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Review"
+        <input className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-20" placeholder="Review"
                       type="text"
                       name="review"
                       value={review}
