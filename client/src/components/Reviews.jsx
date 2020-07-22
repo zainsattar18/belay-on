@@ -46,19 +46,14 @@ class Reviews extends Component {
     })
   }
 
-  
-
 
   getReview = async (climb_id) => {
-    // state_id = this.props.id 
     climb_id = this.props.match.params.id
     const response = await getReviews(climb_id)
     this.setState({
       reviews: response,
       climbId: climb_id
     })
-    // console.log(climb_id)
-    console.log(this.state.reviews)
   }
   addReview = async (reviewData) => {
     const response = await postReview(this.props.match.params.id, reviewData)
@@ -67,16 +62,7 @@ class Reviews extends Component {
     }))
   }
 
-  // updateReview = async (reviewData) => {
-  //   const response = await putReview(this.props.match.params.id, reviewData)
-  //   // id = this.state.reviews 
-  //   // const response = await putReview(id, reviewData)
-  //   //this.state.reviews.id
-  //   this.setState(prevState => ({
-  //     reviews:prevState.reviews.map(review => review.id === parseInt(this.state.climbId) ? response : review)
-  //   }))
-  // }
-
+ 
   updateReview = async (id, reviewData) => {
     const response = await putReview(id, reviewData)
     this.setState(prevState => ({
@@ -93,13 +79,10 @@ class Reviews extends Component {
 
 
   render() {
-    console.log(this.state.reviews)
+    // console.log(this.state.reviews)
     const { info } = this.props.match.params
     const reviewItem = this.state.reviews.find(review => review.id === parseInt(info))
-    // const reviewedItem = this.state.reviews && this.state.reviews.map(data => {
-    //     return data.climb.location
-    //   })
-    // console.log(reviewedItem)
+    
 
     return (
 

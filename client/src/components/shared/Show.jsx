@@ -10,8 +10,8 @@ function Show() {
       <div className="main">
         <div className= 'border-4 border-blue-500 max-w-sm rounded-md overflow-hidden shadow-lg mt-40 p-10'>
 
-          <div className="font-bold text-xl mb-2">Welcome to Belay-On</div>
-          <div>Click below to check out our climbs</div>
+          <div className="font-bold text-2xl mb-2">Welcome to Belay-On</div>
+          <div className="text-sm">Click below to check out our climbs:</div>
           <Link to='/states'>
             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mt-5">Climb On</button>
           </Link>

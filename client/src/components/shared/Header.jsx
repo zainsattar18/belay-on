@@ -1,15 +1,15 @@
 import React from 'react'
-import belayon from '../../images/belayon.jpeg'
+import belayOnlogo from '../../images/belayOnlogo.png'
 import { Link } from 'react-router-dom'
 import copy from '../../images/copy.jpeg'
 
 
 export default function header(props) {
   return (
-    <div className="flex items-center justify-between">
-      <div className="inline-block mt-3 ml-3 h-20 w-20 md:h-auto md:w-auto md:ml-4 md:mt-2">
+    <div className="flex items-center justify-between bg-gray-800">
+      <div className="inline-block mt-5 ml-3 h-20 w-20 md:h-auto md:w-auto md:ml-4 md:mt-2 md:pb-2">
         <Link to='/'>
-          <img src={belayon} alt="Belay On Logo" width="150px" />
+          <img src={belayOnlogo} alt="Belay On Logo" width="150px" />
         </Link>
       </div>
       {props.currentUser ?

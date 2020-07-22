@@ -65,9 +65,8 @@ class AddReview extends Component {
             <div className="mb-4">
               <label className="block text-gray-700 text-sm font-bold mb-2">
                 Review
-        <input className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-20" placeholder="Review"
-                    type="text"
-                    
+        <textarea className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-20" placeholder="Review"
+                  type="text"
                   name="review"
                   value={review}
                   onChange={this.handleChange}
