@@ -46,6 +46,11 @@ http://belayon.surge.sh/
 https://xd.adobe.com/view/1fc940eb-3fa7-4318-bdc0-fe425720f0bf-4a9a/ 
 
 ![desktop](https://i.imgur.com/v0CyqgB.png?1)
+![desktop2](https://i.imgur.com/e3xWyuM.png)
+
+
+![tablet](https://i.imgur.com/SXKwwAL.png)
+![mobile(https://i.imgur.com/uC4OJ7t.png)
 
 #### Component Tree
 
