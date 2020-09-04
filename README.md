@@ -106,19 +106,19 @@ src
 
 | Task                | Priority | Estimated Time | Time Invested | Actual Time |
 | ------------------- | :------: | :------------: | :-----------: | :---------: |
-| Psuedocode| M | 2hrs|  |  
-| Create Parent component| H | 2hrs  | |
-| Create Child components | H | 4.5hrs|  |  
-| Pull Data from API | H | 2hrs|  | 
-| CSS - Basic | M | 3hrs|  | 
-| FlexBox| H | 4hrs|  |  
-| CSS - Advanced - Tailwind | H | 3 hrs |  |   
-| Rail MVC setup | H | 5.5hrs| |  
-| Proper Routing via Rails| H | 3.5hrs|  | 
-| Authentication - Rails | H | 3hrs|  | 
-| Authentication - React| H | 3hrs|  |  
+| Psuedocode| M | 2hrs| 1.5hrs |  
+| Create Parent component| H | 2hrs  | 2hrs |
+| Create Child components | H | 4.5hrs| 3hrs |  
+| Pull Data from API | H | 2hrs| 1hr | 
+| CSS - Basic | M | 3hrs| 3.5hrs | 
+| FlexBox| H | 4hrs| 2.5hrs |  
+| CSS - Advanced - Tailwind | H | 3 hrs | 4.5hrs |   
+| Rail MVC setup | H | 5.5hrs|4.5hrs |  
+| Proper Routing via Rails| H | 3.5hrs| 4hrs  | 
+| Authentication - Rails | H | 3hrs| 3hrs | 
+| Authentication - React| H | 3hrs| 2hrs |  
 | --- | --- |  --- | --- | --- |
-| Total |  |35.5|  |  
+| Total |  |35.5| 31.5 |  
 
 
 
@@ -148,7 +148,25 @@ https://www.draw.io/#G1LNQcKzPDWgZxlEnPlLkEK0RZG7XVZir5
 
 ## Code Showcase
 
-> Use this section to include a brief code snippet of functionality that you are proud of and a brief description.
+Allowing the user to add reviews and edit reviews was one of the most difficult parts of the project. Making sure the right arguments were being passed into the method to retrieve the proper information and making sure it edited the right id.  
+
+```
+ addReview = async (reviewData) => {
+    const response = await postReview(this.props.match.params.id, reviewData)
+    this.setState(prevState => ({
+      reviews: [...prevState.reviews, response]
+    }))
+  }
+
+ 
+  updateReview = async (id, reviewData) => {
+    const response = await putReview(id, reviewData)
+    this.setState(prevState => ({
+      reviews: prevState.reviews.map(review => review.id === parseInt(id) ? response : review)
+    }))
+  }
+
+```
 
 ## Code Issues & Resolutions
 
