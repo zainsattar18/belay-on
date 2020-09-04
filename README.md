@@ -170,4 +170,24 @@ Allowing the user to add reviews and edit reviews was one of the most difficult 
 
 ## Code Issues & Resolutions
 
-> Use this section to list of all major issues encountered and their resolution.
+Biggest issue was understanding how routes in rails were created. I intially assumed that they must be nested which caused major headaches when I moved onto the client side of the app. 
+
+```
+Rails.application.routes.draw do
+  resources :states, only: [:index, :show] do
+    resources :climbs, only: [:index, :show, :create, :destroy] do
+      resources :reviews, except: [:create, :update, :destroy] do
+        resources :photos, only: [:index, :show, :create, :destroy]
+      end
+    end
+  end
+```
+
+After doing some research I realized that I should not nest rails routes more than one level down and chaneged my back-end routes which caused for much easier routing on the React side of things. 
+
+```
+resources :climbs, only: [:show] do 
+    resources :reviews, only: [:create]
+  end
+
+```
