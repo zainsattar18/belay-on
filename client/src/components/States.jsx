@@ -1,13 +1,25 @@
 import React from 'react'
 import { withRouter, Link } from 'react-router-dom'
+// import USAMap from 'react-usa-map'
+
 
 function States(props) {
 
-  // console.log(props.allStates)
+  const stateLinks = props.allStates.map(state => {
+    console.log (state.state)
+  })
+
+  const mapHandler = (e) => {
+    alert(e.target.dataset.name)
+  }
+
+  // console.log(props.allStates) 
   return (
     <div>
+
+      {/* <USAMap onClick={mapHandler}/> */}
       <div className="bg-gray-200">
-        {/* {stateLinks} */}
+        
         {props.allStates.map(data => {
           return <Link to={`/states/${data.id}/climbs`} key={data.id}>
             <div className="flex inline-flex">
@@ -17,6 +29,8 @@ function States(props) {
             </div>
           </Link>
         })}
+      
+
       </div>
     </div>
   )
