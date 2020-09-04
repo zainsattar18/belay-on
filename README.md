@@ -44,6 +44,7 @@ http://belayon.surge.sh/
 #### Wireframes
 
 https://xd.adobe.com/view/1fc940eb-3fa7-4318-bdc0-fe425720f0bf-4a9a/ 
+(https://imgur.com/v0CyqgB)
 
 
 #### Component Tree
